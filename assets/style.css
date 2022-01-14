@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&family=Dancing+Script&family=Dongle&family=Mochiy+Pop+P+One&display=swap');
+
 :root {
   --bullseye-red: #e61a1a;
-  --blue-ribbon: #1a13ff;;
+  --blue-ribbon: #0600ac;
   --bronze-arrowhead: #cd7f32; 
   --bracer-black: #110e0c;
   --astroturf: #28c514;
@@ -9,6 +11,33 @@
 }
 
 body {
+  background-color: var(--blue-ribbon);
+  color: var(--cock-feather);
+}
 
+h1 {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+}
+
+h3 {
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+p {
+  font-family: 'Dongle', sans-serif;
+}
+
+.textBox {
+  background-color: var(--bronze-arrowhead);
+  color: var(--bracer-black);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  width: 400px;
+  height: 350px;
+  border-radius: 15px;
+  box-shadow: inset;
 }
 
