@@ -45,14 +45,14 @@ function getMealRecipe(event) {
   event.preventDefault();
   if (event.target.classList.contains("recipe-btn")) {
     var mealItem = event.target.parentElement.parentElement;
-    fetch(`https//www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
+    fetch(`https//www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.data.id}`)
       .then(response => response.json())
       .then(data => mealRecipeModal(data.meals));
   }
 }
 
 function mealRecipeModal(meal) {
-  console.log(meal);
+  console.log("MEAL: " + meal);
   meal = meal[0];
   var html = `
     <h2 class="recipe-title">${meal.strMeal}/h2>

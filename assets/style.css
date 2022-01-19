@@ -24,9 +24,11 @@ body {
 
 .btn {
   font-family: inherit;
+  font-size: 1.05rem;
   cursor: pointer;
   outline: 0;
-  font-size: 1.05rem;
+  background-color: var(--blue-ribbon);
+  color: var(--sagittarius-gold);
 }
 
 .text {
@@ -299,7 +301,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Mochiy Pop P One', cursive;
+  font-family: 'Satisfy', cursive;
 }
 
 h3 {
