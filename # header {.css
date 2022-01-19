@@ -1,0 +1,58 @@
+# header {
+  background-color: red;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+# left {
+  float: left;
+  width: 200px;
+  clear: left;
+  boarder-right: 1px solid black;
+  height: 30em;
+  overflow: auto;
+  padding-right: .5em;
+}
+# right{
+  float: left;
+  width: 570px;
+  height: 30em;
+  overflow: auto;
+  padding-left: .5em;
+}
+# footer{
+  width: 800px;
+  text-align: center;
+  background-color: #777;
+  clear: both;
+}
+
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+# title{
+  text-align: center;
+  -moz-text-decoration-style: unset;
+}
+# head{
+  text-align: center;
+# label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+# input,
+  label {
+    margin: .4rem 0;
+}
+# p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+input {
+    margin: .4rem;
+}
+*
