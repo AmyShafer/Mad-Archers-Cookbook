@@ -1,0 +1,21 @@
+#map {
+    width: 90%;
+    height: 700px;
+    margin-left: 100px;
+    
+}
+
+#search-input {  
+    margin-left: 100px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 90%;
+}
+
+
+#form-zip {  
+    margin-left: 100px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 90%;
+}

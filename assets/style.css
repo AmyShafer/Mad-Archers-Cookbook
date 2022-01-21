@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&family=Dancing+Script&family=Dongle&family=Mochiy+Pop+P+One&display=swap');
-
 * {
   padding: 0;
   margin: 0;
@@ -7,21 +5,21 @@
 }
 
 :root {
-  --bullseye-red: #e61a1a;
-  --blue-ribbon: #0600ac;
+  --bullseye-red: #ff0d0d;
+  --blue-ribbon: #0001F0;
   --bronze-arrowhead: #cd7f32; 
   --bracer-black: #110e0c;
-  --astroturf: #28c514;
+  --faded-astroturf: #86C23B;
   --sagittarius-gold: #fff243;
   --cock-feather: #f5f5eb;
 }
 
 body {
   background-color: var(--blue-ribbon);
-  color: var(--cock-feather);
+  color: var(--bracer-black);
   font-weight: 400;
   line-height: 1.5;
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .btn {
@@ -33,11 +31,13 @@ body {
 
 .text {
   opacity: 0.9;
+  font-family: 'Satisfy', sans-serif;
 }
 
 .title {
   font-size: 2rem;
   margin-bottom: 1rem;
+  font-family: 'Mochiy Pop P One', sans-serif;
 }
 
 .container {
@@ -48,7 +48,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background: var(--astroturf);
+  background: var(--faded-astroturf);
   text-align: center;
 }
 
@@ -230,6 +230,7 @@ meal-name {
 .recipe-title {
   letter-spacing: 1px;
   padding-bottom: 1rem;
+  font-family: 'Rubik', sans-serif;
 }
 
 .recipe-category {
@@ -279,7 +280,7 @@ meal-name {
 }
 
 .recipe-link a {
-  color: var(--cock-feather);
+  color: var(--bracer-black);
   font-size: 1.2rem;
   font-weight: 700;
   transition: all 0.4s linear;
@@ -294,19 +295,19 @@ meal-name {
 }
 
 h1 {
-  font-family: 'Be Vietnam Pro', sans-serif;
-}
-
-h2 {
-  font-family: 'Dancing Script', cursive;
-}
-
-h3 {
   font-family: 'Mochiy Pop P One', sans-serif;
 }
 
+h2 {
+  font-family: 'Mochiy Pop P One', cursive;
+}
+
+h3 {
+  font-family: 'Rubik', sans-serif;
+}
+
 p {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .notFound {
