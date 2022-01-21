@@ -162,7 +162,7 @@ meal-name {
   background: var(--bullseye-red);
 }
 
-.meal-details {
+/* .meal-details {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -181,7 +181,7 @@ meal-name {
   overflow-y: scroll;
   display: none;
   padding: 2rem 0
-}
+} */
 
 .meal-details::webkit-scrollbar {
   width: 10px;
