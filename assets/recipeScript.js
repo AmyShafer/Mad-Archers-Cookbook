@@ -6,9 +6,9 @@ var recipeCloseButton = document.getElementById("recipe-close-btn");
 // event listener
 searchBtn.addEventListener("click", getMealList);
 mealList.addEventListener("click", getMealRecipe);
-recipeCloseButton.addEventListener("click", () => {
-    mealDetailsContent.parentElement.classList.remove('showRecipe');
-});
+// recipeCloseButton.addEventListener("click", () => {
+//     mealDetailsContent.parentElement.classList.remove('showRecipe');
+// });
 
 // get meal list
 function getMealList() {
