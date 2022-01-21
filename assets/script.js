@@ -7,21 +7,21 @@ var recipeCloseButton = document.getElementById("recipe-close-btn");
 searchBtn.addEventListener("click", getMealList);
 mealList.addEventListener("click", getMealRecipe);
 recipeCloseButton.addEventListener("click", () => {
-  mealDetailsContent.parentElement.classList.remove('showRecipe');
+    mealDetailsContent.parentElement.classList.remove('showRecipe');
 });
 
 // get meal list
 function getMealList() {
-  var searchInputTxt = document.getElementById("search-input").value.trim();
-  console.log(searchInputTxt);
-  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
-  .then(response => response.json())
-  .then(data => {
-    var html = "";
-    if (data.meals) {
-      data.meals.forEach(meal => {
-        html += `
-        <div class="meal-item" data-id="${meal.idMeal}>
+    var searchInputTxt = document.getElementById("search-input").value.trim();
+    console.log(searchInputTxt);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
+        .then(response => response.json())
+        .then(data => {
+            var html = "";
+            if (data.meals) {
+                data.meals.forEach(meal => {
+                    html += `
+        <div class="meal-item four columns" data-id="${meal.idMeal}">
          <div class="meal-img">
           <img src="${meal.strMealThumb}" alt="food">
          </div>
@@ -31,30 +31,30 @@ function getMealList() {
         </div>
       </div>
       `;
-      });
-      mealList.classList.remove("notFound");
-    } else {
-      html = "The Mad Archer didn't find any meals with those ingredients.";
-      mealList.classList.add("notFound");
-    }
-    mealList.innerHTML = html;
-  })
+                });
+                mealList.classList.remove("notFound");
+            } else {
+                html = "The Mad Archer didn't find any meals with those ingredients.";
+                mealList.classList.add("notFound");
+            }
+            mealList.innerHTML = html;
+        })
 }
 
 function getMealRecipe(event) {
-  event.preventDefault();
-  if (event.target.classList.contains("recipe-btn")) {
-    var mealItem = event.target.parentElement.parentElement;
-    fetch(`https//www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
-      .then(response => response.json())
-      .then(data => mealRecipeModal(data.meals));
-  }
+    event.preventDefault();
+    if (event.target.classList.contains("recipe-btn")) {
+        var mealItem = event.target.parentElement.parentElement;
+        fetch(`https//www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
+            .then(response => response.json())
+            .then(data => mealRecipeModal(data.meals));
+    }
 }
 
 function mealRecipeModal(meal) {
-  console.log(meal);
-  meal = meal[0];
-  var html = `
+    console.log(meal);
+    meal = meal[0];
+    var html = `
     <h2 class="recipe-title">${meal.strMeal}/h2>
     <p class="recipe-category">${meal.strCategory}</p>
     <div class="recipe-instruct">
