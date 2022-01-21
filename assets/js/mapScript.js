@@ -1,7 +1,7 @@
 window.onload = function() {
   let ps = placeSearch({
     key: '4EIp75cIJxshpnY02ZKqnaRuIRfessKV',
-    container: document.querySelector('#search-input'),
+    container: document.querySelector('#place-search-input'),
     useDeviceLocation: true,
     collection: [
       'adminArea',

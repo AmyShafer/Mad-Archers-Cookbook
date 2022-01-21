@@ -334,7 +334,7 @@ p {
   .meal-item {
     margin: 0;
   }
-  ,meal-details {
+  meal-details {
     width: 700px;
   }
 }
