@@ -4,52 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>Mad Archer's Cookbook</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css">
-    <!-- <link rel="stylesheet" href="./assets/style.css"> -->
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Rubik&family=Satisfy&family=Ubuntu&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Outfit&family=Raleway&family=Staatliches&display=swap" rel="stylesheet">
+    <!-- Map APIs -->
     <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css" />
     <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
-    <link rel="stylesheet" href="assets/css/mapStyle.css">
-    <link rel="stylesheet" href="assets/martinstyle.css">
+    <!-- CSS files -->
+    <link rel="stylesheet" href="./assets/css/mapStyle.css">
+    <link rel="stylesheet" href="./assets/css/skeletonStyle.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <div class="container">
+      <h2 class="title">Mad Archer's Cookbook</h2>
+      <h3 class="tagline">Take aim at your next meal!</h3>
+     
+      <!-- Meals -->  
         <div class="meal-wrapper">
-            <div class="meal-search row">
-                <h2>Mad Archer's Cookbook!</h2>
-                <blockquote>Take your aim at food block!<br>
+            <div class="meal-search">
+                    <!-- Search Box for Meals-->
                     <div class="meal-search-box">
                         <input type="text" class="search-content" placeholder="Enter an ingredient" id="search-input">
-                        <button type="submit" class="search-btn btn" id="search-btn">
-                            Submit
+                        <button type="submit" class="search-button btn" id="search-button">
+                          <i class="fas fa-bullseye"></i>
                         </button>
                     </div>
             </div>
-            <!-- Where the meal cards go -->
+            <!-- Where the possible recipe cards go -->
             <div class="meal-result">
-                <h2 class="title">Your Meals!</h2>
+                <h2 class="title">Mad Archer Finds:</h2>
                 <div id="meal">
+
                 </div>
             </div>
+          </div>  
 
-            <input type="search" id="place-search-input" placeholder="Start Searching..." />
-            <div id="map">
-
+          <div class="selected-recipe">
+            <!-- recipe close button -->
+            <button type="button" class="btn recipe-close-button" id="recipe-close-button">
+              <i class="fas fa-times"></i>
+            </button>
+    
+            <!-- when the user selects a recipe -->
+            <div class="selected-recipe-info">
+              
             </div>
-        </div>
-    </div>
-            <script src="./assets/recipeScript.js"></script>
-            <script src="assets/js/mapScript.js"></script>
-</body>
+          </div> 
 
+          <div class="past-ingredients">
+            <h2>Most Recent Searches:</h2>
+              <ul></ul>
+          </div>
+
+           <!-- The map -->
+          </br>
+          </br> 
+          
+          <div class="map-description">
+            <h3>Need more ingredients? The Mad Archer can point you in the direction of the nearest grocery stores!</h3>
+          </div>
+
+          </br> 
+          <input type="search" id="map-search-input" placeholder="Type Grocery Store" />
+          <div id="map">
+          </div>  
+    </div>
+    <script src="./assets/js/recipeScript.js"></script>
+    <script src="./assets/js/mapScript.js"></script>
+</body>
 </html>
