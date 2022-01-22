@@ -4,6 +4,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 :root {
     --bullseye-red: #ff0d0d;
     --blue-ribbon: #0001F0;
@@ -19,7 +20,6 @@ body {
     line-height: 1.6;
 }
 
-/*  */
 .btn {
     font-family: inherit;
     cursor: pointer;
@@ -32,19 +32,18 @@ body {
 }
 
 .title {
+    margin-top: 20px;
     font-family: 'Staatliches', cursive;
     color: var(--bullseye-red);
     font-size: 4rem;
     margin-bottom: 1rem;
 }
 
-h3 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.3em;
-    color: var(--bracer-black);
+.tagline {
+    font-family: 'Lobster', cursive;
+    text-align: center;
 }
 
-/*  */
 .container {
     min-height: 100vh;
 }
@@ -62,9 +61,11 @@ h3 {
 }
 
 .meal-search-box {
+    font-family: 'Raleway', sans-serif;
     margin: 1.2rem 0;
     display: flex;
     align-items: stretch;
+    justify-content: center;
 }
 
 .search-control,
@@ -134,20 +135,24 @@ h3 {
     display: block;
 }
 
-.meal-name {
+.recipe-name {
     padding: 1.5rem 0.5rem;
 }
 
-.meal-name h3 {
-    font-size: 1.4rem;
+.recipe-name h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.7em;
+    font-weight: 700;
+    color: var(--bracer-black);
 }
 
 .recipe-btn {
+    font-family: 'Lobster', cursive;
     text-decoration: none;
     color: var(--cock-feather);
     background-color: var(--bullseye-red);
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 2rem;
     padding: 0.75rem 0;
     display: block;
     width: 175px;
@@ -165,14 +170,15 @@ h3 {
 }
 
 .recipe-btn:hover {
+    font-family: 'Lobster', cursive;
     background-color: var(--sagittarius-gold);
     color: var(--bracer-black);
 }
 
 /* meal details */
-.meal-details {
+.selected-recipe {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1em;
+    font-size: 1.6em;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -195,11 +201,11 @@ h3 {
     padding: 2rem 0;
 }
 
-.meal-details::-webkit-scrollbar{ 
+.selected-recipe::-webkit-scrollbar{ 
     width: 10px;
 }
 
-.meal-details::-webkit-scrollbar-thumb {
+.selected-recipe::-webkit-scrollbar-thumb {
     background-color: var(--cock-feather);
     border-radius: 2rem;
     -webkit-border-radius: 2rem;
@@ -212,15 +218,16 @@ h3 {
     display: block;
 }
 
-.meals-detail-content {
+.selected-recipe-info {
     margin: 2rem;
 }
 
-.meals-detail-content p:not(.recipe-category) {
+.selected-recipe-info p:not(.recipe-category) {
     padding: 1rem 0;
 }
 
 .recipe-close-button {
+    background-color: var(--sagittarius-gold);
     position: absolute;
     right: 2rem;
     top: 2rem;
@@ -241,6 +248,7 @@ h3 {
 }
 
 .recipe-title {
+    font-family: 'Lobster', cursive;
     letter-spacing: 1px;
     padding-bottom: 1rem;
 }
@@ -275,14 +283,18 @@ h3 {
     display: block;
 }
 
-.recipe-link {
+.youtube-link {
     margin: 1.4rem 0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 900;
 }
 
-.recipe-link a {
-    color: var(--cock-feather);
-    font-size: 1.2rem;
-    font-weight: 700;
+.youtube-link a {
+    color: var(--sagittarius-gold);
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 900;
     transition: all 0.4s linear;
     -webkit-transition: all 0.4s linear;
     -moz-transition: all 0.4s linear;
@@ -290,12 +302,16 @@ h3 {
     -o-transition: all 0.4s linear;
 }
 
-.recipe-link a:hover {
+.youtube-link a:hover {
+    color: var(--blue-ribbon);
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 900;
     opacity: 0.8;
 }
 
 /* There were no recipes food with the ingredients shown */
-.notFound {
+.noMatches {
     grid-template-columns: 1fr!important;
     color: var(--bullseye-red);
     font-size: 1.8rem;
@@ -303,27 +319,21 @@ h3 {
     width: 100%;
 }
 
-/*  map style */ 
-#map {
-  width: 90%;
-  height: 700px;
-  margin-left: 100px;
-  
+.past-ingredients {
+    font-family: 'Lobster', cursive;
+    display: none;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--bullseye-red);
+    color: var(--cock-feather);
+    text-align: center;  
 }
 
-#map-search-input {  
-  margin-left: 100px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  width: 90%;
-}
-
-
-#form-zip {  
-  margin-left: 100px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  width: 90%;
+.past-ingredients h2 ul li {
+    display: none;
+    font-family: 'Lobster', cursive;
+    color: var(--cock-feather);
 }
 
 /* Media Queries */

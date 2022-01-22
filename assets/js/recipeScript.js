@@ -1,10 +1,11 @@
 var searchButton = document.getElementById('search-button');
 var possibleRecipes = document.getElementById('meal');
-var seeRecipe = document.querySelector('.meal-details-content');
+var seeRecipe = document.querySelector('.selected-recipe-info');
+var searchHistory = document.querySelector('.past-ingredients');
 var closeButton = document.getElementById('recipe-close-button');
 
-// get meal list that matches with the ingredients
-function getMealList(){
+// Recipe matches with the ingredient user entered
+function getPossibleRecipes() {
    var searchInputText = document.getElementById('search-input').value.trim();
    lastSearch(searchInputText);
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputText}`)
@@ -18,37 +19,36 @@ function getMealList(){
                         <div class = "meal-img">
                             <img src = "${meal.strMealThumb}" alt = "food">
                         </div>
-                        <div class = "meal-name">
+                        <div class = "recipe-name">
                             <h3>${meal.strMeal}</h3>
                             <a href = "#" class = "recipe-btn">Get Recipe</a>
                         </div>
                     </div>
                 `;
             });
-            possibleRecipes.classList.remove('notFound');
-        } else{
+            possibleRecipes.classList.remove('noMatches');
+        } else {
             html = "Mad Archer did not find any recipes with the ingredients you entered!";
-            possibleRecipes.classList.add('notFound');
+            possibleRecipes.classList.add('noMatches');
         }
 
         possibleRecipes.innerHTML = html;
     });
 }
 
-// get recipe of the meal
-function getMealRecipe(e){
-    e.preventDefault();
-    if(e.target.classList.contains('recipe-btn')){
-        let mealItem = e.target.parentElement.parentElement;
+// get recipe of the meal the user selected
+function selectRecipe(event) {
+    event.preventDefault();
+    if(event.target.classList.contains('recipe-btn')) {
+        let mealItem = event.target.parentElement.parentElement;
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
         .then(response => response.json())
         .then(data => recipeCard(data.meals));
     }
 }
 
-// create a modal
+// display the recipe card when clicked
 function recipeCard(meal){
-    console.log(meal);
     meal = meal[0];
     let html = `
         <h2 class = "recipe-title">${meal.strMeal}</h2>
@@ -60,7 +60,7 @@ function recipeCard(meal){
         <div class = "recipe-meal-img">
             <img src = "${meal.strMealThumb}" alt = "">
         </div>
-        <div class = "recipe-link">
+        <div class = "youtube-link">
             <a href = "${meal.strYoutube}" target = "_blank">Watch Video</a>
         </div>
     `;
@@ -69,25 +69,20 @@ function recipeCard(meal){
 }
 
 function lastSearch (userInput) {
+  searchHistory.setAttribute("style", "display: block;");
   var mostRecentSearchKey = localStorage.setItem("Most Recent Search:", userInput);
-  console.log(mostRecentSearchKey);  
+  var pastIngredient = localStorage.getItem("Most Recent Search:");
+  console.log(pastIngredient);
+  var ingredientToAdd = "";
+  ingredientToAdd = document.createElement("li");
+  ingredientToAdd.setAttribute("style", "display: block; color: #fff243; font-size: 3em");
+  ingredientToAdd.innerHTML = pastIngredient; 
+  searchHistory.appendChild(ingredientToAdd);
 }
 
-/* Function allows user to save their todos after closing/refreshing the page */
-function ghostTodos(event) {
-    var saveClicked = $(event.currentTarget).prev().val(); // the todo text
-    var key = $(event.currentTarget).prev().data("set"); // the index of the time block
-    localStorage.setItem(key, saveClicked);
-    var savedItems = localStorage.getItem(key);
-    console.log("TEST: " + localStorage.getItem(6));
-  
-    todos[key] = savedItems;
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }
-
-// event listeners
-searchButton.addEventListener('click', getMealList);
-possibleRecipes.addEventListener('click', getMealRecipe);
+// Event Listeners
+searchButton.addEventListener('click', getPossibleRecipes);
+possibleRecipes.addEventListener('click', selectRecipe);
 closeButton.addEventListener('click', () => {
     seeRecipe.parentElement.classList.remove('showRecipe');
 });
