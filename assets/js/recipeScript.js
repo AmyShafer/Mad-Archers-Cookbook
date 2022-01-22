@@ -1,11 +1,12 @@
 var searchButton = document.getElementById('search-button');
 var possibleRecipes = document.getElementById('meal');
 var seeRecipe = document.querySelector('.meal-details-content');
-var recipeCloseBtn = document.getElementById('recipe-close-btn');
+var closeButton = document.getElementById('recipe-close-button');
 
 // get meal list that matches with the ingredients
 function getMealList(){
    var searchInputText = document.getElementById('search-input').value.trim();
+   lastSearch(searchInputText);
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputText}`)
     .then(response => response.json())
     .then(data => {
@@ -33,7 +34,6 @@ function getMealList(){
         possibleRecipes.innerHTML = html;
     });
 }
-
 
 // get recipe of the meal
 function getMealRecipe(e){
@@ -68,9 +68,26 @@ function recipeCard(meal){
     seeRecipe.parentElement.classList.add('showRecipe');
 }
 
+function lastSearch (userInput) {
+  var mostRecentSearchKey = localStorage.setItem("Most Recent Search:", userInput);
+  console.log(mostRecentSearchKey);  
+}
+
+/* Function allows user to save their todos after closing/refreshing the page */
+function ghostTodos(event) {
+    var saveClicked = $(event.currentTarget).prev().val(); // the todo text
+    var key = $(event.currentTarget).prev().data("set"); // the index of the time block
+    localStorage.setItem(key, saveClicked);
+    var savedItems = localStorage.getItem(key);
+    console.log("TEST: " + localStorage.getItem(6));
+  
+    todos[key] = savedItems;
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+
 // event listeners
 searchButton.addEventListener('click', getMealList);
 possibleRecipes.addEventListener('click', getMealRecipe);
-recipeCloseBtn.addEventListener('click', () => {
+closeButton.addEventListener('click', () => {
     seeRecipe.parentElement.classList.remove('showRecipe');
 });
