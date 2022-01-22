@@ -28,7 +28,7 @@ Users do not need setup.
 
 Check out Mad Archer's Cookbook in action: 
 
- <img src="./assets/images/madArchers.png " alt="Mad Archer's Cookbook" width="380" height="350"/>
+ <img src="./assets/images/madArchers.png " alt="Mad Archer's Cookbook" width="470" height="340"/>
 
 --- 
 
