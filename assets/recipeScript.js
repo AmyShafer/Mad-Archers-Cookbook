@@ -1,74 +1,88 @@
-var searchBtn = document.getElementById("search-btn");
-var mealList = document.getElementById("meal");
-var mealDetailsContent = document.querySelector(".meal-details-content");
-var recipeCloseButton = document.getElementById("recipe-close-btn");
+var searchButton = document.getElementById('search-button');
+var possibleRecipes = document.getElementById('meal');
+var seeRecipe = document.querySelector('.selected-recipe-info');
+var searchHistory = document.querySelector('.past-ingredients');
+var closeButton = document.getElementById('recipe-close-button');
 
-// event listener
-searchBtn.addEventListener("click", getMealList);
-mealList.addEventListener("click", getMealRecipe);
-// recipeCloseButton.addEventListener("click", () => {
-//     mealDetailsContent.parentElement.classList.remove('showRecipe');
-// });
+// Recipe matches with the ingredient user entered
+function getPossibleRecipes() {
+   var searchInputText = document.getElementById('search-input').value.trim();
+   lastSearch(searchInputText);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputText}`)
+    .then(response => response.json())
+    .then(data => {
+        let html = "";
+        if(data.meals){
+            data.meals.forEach(meal => {
+                html += `
+                    <div class = "meal-item" data-id = "${meal.idMeal}">
+                        <div class = "meal-img">
+                            <img src = "${meal.strMealThumb}" alt = "food">
+                        </div>
+                        <div class = "recipe-name">
+                            <h3>${meal.strMeal}</h3>
+                            <a href = "#" class = "recipe-btn">Get Recipe</a>
+                        </div>
+                    </div>
+                `;
+            });
+            possibleRecipes.classList.remove('noMatches');
+        } else {
+            html = "Mad Archer did not find any recipes with the ingredients you entered!";
+            possibleRecipes.classList.add('noMatches');
+        }
 
-// get meal list
-function getMealList() {
-    var searchInputTxt = document.getElementById("search-input").value.trim();
-    console.log(searchInputTxt);
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
-        .then(response => response.json())
-        .then(data => {
-            var html = "";
-            if (data.meals) {
-                data.meals.forEach(meal => {
-                    html += `
-        <div class="meal-item four columns" data-id="${meal.idMeal}">
-         <div class="meal-img">
-          <img src="${meal.strMealThumb}" alt="food">
-         </div>
-        <div class="meal-name">
-          <h3>${meal.strMeal}</h3>
-          <a href="#" class="recipe-btn">Grab Recipe</a>
-        </div>
-      </div>
-      `;
-                });
-                mealList.classList.remove("notFound");
-            } else {
-                html = "The Mad Archer didn't find any meals with those ingredients.";
-                mealList.classList.add("notFound");
-            }
-            mealList.innerHTML = html;
-        })
+        possibleRecipes.innerHTML = html;
+    });
 }
 
-function getMealRecipe(event) {
+// get recipe of the meal the user selected
+function selectRecipe(event) {
     event.preventDefault();
-    if (event.target.classList.contains("recipe-btn")) {
-        var mealItem = event.target.parentElement.parentElement;
-        fetch(`https//www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
-            .then(response => response.json())
-            .then(data => mealRecipeModal(data.meals));
+    if(event.target.classList.contains('recipe-btn')) {
+        let mealItem = event.target.parentElement.parentElement;
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
+        .then(response => response.json())
+        .then(data => recipeCard(data.meals));
     }
 }
 
-function mealRecipeModal(meal) {
-    console.log(meal);
+// display the recipe card when clicked
+function recipeCard(meal){
     meal = meal[0];
-    var html = `
-    <h2 class="recipe-title">${meal.strMeal}/h2>
-    <p class="recipe-category">${meal.strCategory}</p>
-    <div class="recipe-instruct">
-      <h3>Instructions:</h3>
-      <p>${meal.strInstructions}</p>
-    </div>
-    <div class="recipe-meal-img">
-      <img src="${meal.strMealThumb}" alt="food image">
-    </div>
-    <div class="recipe-link">
-      <a href="${meal.strYouTube}" target="_blank">Watch Video</a>
-    </div>
+    let html = `
+        <h2 class = "recipe-title">${meal.strMeal}</h2>
+        <p class = "recipe-category">${meal.strCategory}</p>
+        <div class = "recipe-instruct">
+            <h3>Instructions:</h3>
+            <p>${meal.strInstructions}</p>
+        </div>
+        <div class = "recipe-meal-img">
+            <img src = "${meal.strMealThumb}" alt = "">
+        </div>
+        <div class = "youtube-link">
+            <a href = "${meal.strYoutube}" target = "_blank">Watch Video</a>
+        </div>
     `;
-    mealDetailsContentContent.innerHTML = html;
-    mealDetailsContent.parentElement.classList.add('showRecipe')
+    seeRecipe.innerHTML = html;
+    seeRecipe.parentElement.classList.add('showRecipe');
 }
 
+function lastSearch (userInput) {
+  searchHistory.setAttribute("style", "display: block;");
+  var mostRecentSearchKey = localStorage.setItem("Most Recent Search:", userInput);
+  var pastIngredient = localStorage.getItem("Most Recent Search:");
+  console.log(pastIngredient);
+  var ingredientToAdd = "";
+  ingredientToAdd = document.createElement("li");
+  ingredientToAdd.setAttribute("style", "display: block; color: #fff243; font-size: 3em");
+  ingredientToAdd.innerHTML = pastIngredient; 
+  searchHistory.appendChild(ingredientToAdd);
+}
+
+// Event Listeners
+searchButton.addEventListener('click', getPossibleRecipes);
+possibleRecipes.addEventListener('click', selectRecipe);
+closeButton.addEventListener('click', () => {
+    seeRecipe.parentElement.classList.remove('showRecipe');
+});
