@@ -1,79 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mad Archer's Cookbook</title>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Outfit&family=Raleway&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-  <link rel = "stylesheet" href = "./assets/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Mad Archer's Cookbook</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css">
+    <!-- <link rel="stylesheet" href="./assets/style.css"> -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Outfit&family=Raleway&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css" />
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+    <link rel="stylesheet" href="assets/css/mapStyle.css">
+    <link rel="stylesheet" href="assets/martinstyle.css">
 </head>
+
 <body>
-  
-  <div class = "container">
-    <div class = "meal-wrapper">
-      <div class = "meal-search">
-        <h2 class = "title">Mad Archer's Cookbook</h2>
-        <blockquote>Take aim at your next meal!<br>
-        </blockquote>
-
-        <div class = "meal-search-box">
-          <input type = "text" class = "search-control" placeholder="Enter an ingredient" id = "search-input">
-          <button type = "submit" class = "search-button btn" id = "search-button">
-            <i class="fas fa-bullseye"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class = "meal-result">
-        <h2 class = "title">Mad Archer Finds:</h2>
-        <div id= "meal">
-          <!-- meal item -->
-          <!-- <div class = "meal-item">
-            <div class = "meal-img">
-              <img src = "food.jpg" alt = "food">
+    <div class="container">
+        <div class="meal-wrapper">
+            <div class="meal-search">
+                <h2 class="title">Mad Archer's Cookbook</h2>
+                <h3>Take aim at your next meal!</h3>
+                    <!-- Search Box -->
+                    <div class="meal-search-box">
+                        <input type="text" class="search-content" placeholder="Enter an ingredient" id="search-input">
+                        <button type="submit" class="search-button btn" id="search-button">
+                          <i class="fas fa-bullseye"></i>
+                        </button>
+                    </div>
             </div>
-            <div class = "meal-name">
-              <h3>Potato Chips</h3>
-              <a href = "#" class = "recipe-btn">Get Recipe</a>
+            <!-- Where the meal cards go -->
+            <div class="meal-result">
+                <h2 class="title">Mad Archer Finds:</h2>
+                <div id="meal">
+                </div>
             </div>
-          </div> -->
-          <!-- end of meal item -->
-        </div>
-      </div>
+          </div>  
 
-
-      <div class = "meal-details">
-        <!-- recipe close btn -->
-        <button type = "button" class = "btn recipe-close-btn" id = "recipe-close-btn">
-          <i class = "fas fa-times"></i>
-        </button>
-
-        <!-- meal content -->
-        <div class = "meal-details-content">
-          <!-- <h2 class = "recipe-title">Meals Name Here</h2>
-          <p class = "recipe-category">Category Name</p>
-          <div class = "recipe-instruct">
-            <h3>Instructions:</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo blanditiis quis accusantium natus! Porro, reiciendis maiores molestiae distinctio veniam ratione ex provident ipsa, soluta suscipit quam eos velit autem iste!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet aliquam voluptatibus ad obcaecati magnam, esse numquam nisi ut adipisci in?</p>
+          <div class = "meal-details">
+            <!-- recipe close button -->
+            <button type = "button" class = "btn recipe-close-button" id = "recipe-close-button">
+              <i class = "fas fa-times"></i>
+            </button>
+    
+            <!-- when the user selects a recipe -->
+            <div class = "meal-details-content">
+              
+            </div>
           </div>
-          <div class = "recipe-meal-img">
-            <img src = "food.jpg" alt = "">
-          </div>
-          <div class = "recipe-link">
-            <a href = "#" target = "_blank">Watch Video</a>
-          </div> -->
-        </div>
-      </div>
+
+            <!-- The map -->
+            <input type="search" id="place-search-input" placeholder="Start Searching..." />
+            <div id="map">
+
+            </div>
+        
     </div>
-  </div>
-
-
-
-  <script src = "./assets/script.js"></script>
+    <script src="./assets/js/recipeScript.js"></script>
+    <script src="./assets/js/mapScript.js"></script>
 </body>
 </html>

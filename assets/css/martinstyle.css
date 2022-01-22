@@ -1,0 +1,21 @@
+img {
+    width: 250px;
+    height: 250px;
+}
+
+.meal-item {
+    height: 500px;
+    padding: 15px;
+}
+
+.meal-search {
+    text-align: center;
+}
+
+.container {
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+}
