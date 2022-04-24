@@ -7,7 +7,8 @@ var closeButton = document.getElementById('recipe-close-button');
 // Recipe matches with the ingredient user entered
 function getPossibleRecipes() {
    var searchInputText = document.getElementById('search-input').value.trim();
-   lastSearch(searchInputText);
+   var mostRecentSearchKey = localStorage.setItem("Most Recent Search:", searchInputText);
+   lastSearch();
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputText}`)
     .then(response => response.json())
     .then(data => {
@@ -68,18 +69,18 @@ function recipeCard(meal){
     seeRecipe.parentElement.classList.add('showRecipe');
 }
 
-function lastSearch (userInput) {
+function lastSearch () {
   searchHistory.setAttribute("style", "display: block;");
-  var mostRecentSearchKey = localStorage.setItem("Most Recent Search:", userInput);
   var pastIngredient = localStorage.getItem("Most Recent Search:");
-  console.log(pastIngredient);
   var ingredientToAdd = "";
   ingredientToAdd = document.createElement("li");
   ingredientToAdd.setAttribute("style", "display: block; color: #fff243; font-size: 3em");
-  ingredientToAdd.innerHTML = pastIngredient; 
+  ingredientToAdd.textContent = pastIngredient; 
+  console.log(ingredientToAdd);
   searchHistory.appendChild(ingredientToAdd);
 }
 
+lastSearch();
 // Event Listeners
 searchButton.addEventListener('click', getPossibleRecipes);
 possibleRecipes.addEventListener('click', selectRecipe);
